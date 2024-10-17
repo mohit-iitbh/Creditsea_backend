@@ -1,4 +1,4 @@
-import express from 'express';
+import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
@@ -23,6 +23,9 @@ app.use(cors(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'views')));
+app.get("/", (_req: Request, res: Response)=>{
+    res.send("Welcome to Server");
+});
 app.use(routes);
 
 app.listen(port, () => {
